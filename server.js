@@ -29,11 +29,14 @@ app.post('/api/fileanalyse', (req, res) => {
   const form = formidable.IncomingForm();
   
   form.parse(req, (err, fields, files) => {
-    console.log('fields', fields);
     
-    console.log('files', files);
+    let { size, name, type } = files.upfile;
     
-    console.log('try', files.upfile);
+    res.json({
+      name, 
+      type,
+      size
+    });
   
   })
 })
